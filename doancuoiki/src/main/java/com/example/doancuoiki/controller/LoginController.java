@@ -50,7 +50,7 @@ public class LoginController {
         // Xử lý đăng nhập
         UserModel user = userService.login(username, password);
         if (user != null) {
-            session.setAttribute("account", user);;
+            session.setAttribute("account", user);
 //            session.setAttribute("fullname", user.getFullname()); // Lưu fullname vào session
 //            session.setAttribute(Constant.SESSION_ACCOUNT, user); // Lưu toàn bộ UserModel vào session
 
