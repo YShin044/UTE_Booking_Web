@@ -943,6 +943,27 @@ line-height: 35px;
      margin-top: 90px;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Loại bỏ khoảng cách trên dưới */
+}
+
+.logo img {
+    max-height: 70px; /* Điều chỉnh chiều cao theo nhu cầu (80px là ví dụ, có thể thử 100px hoặc hơn) */
+    width: auto; /* Đảm bảo giữ tỷ lệ của logo */
+    padding: center; /* Thêm khoảng cách trên dưới nếu cần */
+}
+
+.logo_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Đảm bảo logo nằm gọn trong chiều cao của thanh điều hướng */
+}
+
+
 
 
 
