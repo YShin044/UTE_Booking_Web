@@ -10,4 +10,5 @@ public class HomeController {
     public String home() {
         return "index";  // Tên của tệp HTML trong thư mục templates, không cần đuôi .html
     }
+	
 }
