@@ -38,7 +38,22 @@ public class UserModel implements Serializable {
     
     @Column(name = "reset_token", length = 36) // Thêm trường resetToken vào bảng
     private String resetToken;
+   
+
+    @Column(name = "images", length = 500)
+    private String images;
     
+    @Column(name = "status")
+    private int status;
+    
+    
+ // Phương thức tự động gán giá trị createdAt
+    @PrePersist
+    public void prePersist() {
+        if (createdAt == null) {
+            createdAt = new Date(); // Gán thời gian hiện tại
+        }
+    }
 
 	public Long getId() {
 		return id;
@@ -104,6 +119,21 @@ public class UserModel implements Serializable {
 		this.resetToken = resetToken;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
+	}
 
 	
 	

@@ -1,10 +1,15 @@
 package com.example.doancuoiki.service.Impl;
 
+
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
 
 import com.example.doancuoiki.model.UserModel;
 import com.example.doancuoiki.respository.UserRepository;
@@ -15,6 +20,21 @@ public class UserServiceImpl implements IUserServices {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private JavaMailSender mailsender;
+    
+    
+    public void sendmail(String tomail,
+    					String subject,
+    					String body) {
+    	SimpleMailMessage ms = new SimpleMailMessage();
+    	ms.setFrom("xuxutruong123@gmail.com");
+    	ms.setTo(tomail);
+    	ms.setText(body);
+    	ms.setSubject(subject);
+    	mailsender.send(ms);
+    }
 
     @Override
     public UserModel login(String username, String password) {
@@ -37,17 +57,19 @@ public class UserServiceImpl implements IUserServices {
     }
 
     @Override
-    public boolean register(String email, String password, String username, String fullname, String phone) {
+    public boolean register(String username, String password,String email,String fullname, String phone) {
         if (checkExistEmail(email) || checkExistUsername(username) || checkExistPhone(phone)) {
             return false;
         }
 
         UserModel user = new UserModel();
-        user.setEmail(email);
-        user.setPassword(password); // Lưu mật khẩu trực tiếp, không mã hóa
         user.setUsername(username);
-        user.setFullname(fullname);
+        user.setPassword(password);  // Nên mã hóa mật khẩu trước khi lưu
+        user.setEmail(email);
         user.setPhone(phone);
+        user.setFullname(fullname);
+
+        // Lưu người dùng vào cơ sở dữ liệu
         userRepository.save(user);
         return true;
     }
@@ -99,4 +121,35 @@ public class UserServiceImpl implements IUserServices {
     public UserModel FindByEmail(String email) {
         return userRepository.findByEmail(email).orElse(null);
     }
+    
+    @Override
+	public void updatePassword(String email, String newPassword) {
+		UserModel us = FindByEmail(email);
+	    if (us != null) { // Kiểm tra nếu người dùng tồn tại
+	        us.setPassword(newPassword);
+	        userRepository.save(us); // Lưu thông tin người dùng đã được cập nhật vào cơ sở dữ liệu
+	    }
+	}
+    
+    @Override
+	public List<UserModel> getalluser() {
+		// TODO Auto-generated method stub
+		return userRepository.findAll();
+		
+	}
+
+	@Override
+	public void deleteuser(int id) {
+		userRepository.deleteById(id);
+	}
+
+	@Override
+	public void updateuser(String name, String phone, String email,int id) {
+		UserModel us = findById(id);
+		us.setEmail(email);
+		us.setFullname(name);
+		us.setPhone(phone);
+		userRepository.save(us);
+	}
+    
 }

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
+<!-- Include Bootstrap JS and jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
    <head>
       <!-- basic -->
       <meta charset="utf-8">
@@ -37,6 +41,14 @@
       </div>
       <!-- end loader -->
       <!-- header -->
+      </head>
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img th:src="@{/images/loading.gif}" alt="#"/></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
       <header>
          <!-- header inner -->
          <div class="header">
@@ -58,16 +70,16 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
-                                 <li class="nav-item">
+                              <li class="nav-item">
                                  <a class="nav-link" th:href="@{/home}">Trang chủ</a>
                               </li>
-                              <li class="nav-item active">
+                              <li class="nav-item">
                                  <a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" th:href="@{/booknow}">Đặt sân ngay</a>
+                                 <a class="nav-link active" th:href="@{/booknow}">Đặt sân ngay</a>
                               </li>
-                              <li class="nav-item">
+                             <li class="nav-item">
    								<span th:if="${session.account != null}">
       								<a class="nav-link" th:href="@{/profile}" th:text="${fullname}"></a>
       								
@@ -86,89 +98,125 @@
       </header>
       <!-- end header inner -->
       <!-- end header -->
-      <div class="back_re">
+        <div class="back_re">
          <div class="container">
             <div class="row">
                <div class="col-md-12">
                   <div class="title">
-                    <h2>Thư viện ảnh</h2>
+                      <h2>Đặt sân ngay!!</h2>
                   </div>
                </div>
             </div>
          </div>
       </div>
-      <!-- gallery -->
-      <div  class="gallery">
+       <!-- book -->
+      <div  class="book">
          <div class="container">
-           
             <div class="row">
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh1.jpg" alt="#"/></figure>
+               <div class="col-md-12">
+                  <div class="titlepage">
                   </div>
                </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh2.jpg" alt="#"/></figure>
+            </div>
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="book_box">
+                     <div class="book_img">
+                        <figure><img src="images/anh1.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="book_room">
+                        <h3>Sân 5-1</h3>
+                        <span> 100.000 VNĐ/giờ </span>
+                        <p>Sân bóng 5 người được thiết kế ở một vị trí thuận tiện, nằm ngay cạnh căn tin và bãi xe, giúp dễ dàng di chuyển và sử dụng các dịch vụ tiện ích xung quanh. </p>
+                     
+ 						<p>------------------------------------</p>     
+ 						           <div class="col-md-12">
+                  <button class="book_btn btn btn-primary" data-toggle="modal" data-target="#bookingModal" data-field="Sân 5-1">Đặt Sân</button>
+                                 </div>             
+ 					   </div>
                   </div>
                </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh3.jpg" alt="#"/></figure>
+               <div class="col-md-4">
+                  <div class="book_box">
+                     <div class="book_img">
+                        <figure><img src="images/anh6.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="book_room">
+                        <h3>Sân 5-2</h3>
+                        <span>120.000 VNĐ/giờ </span>
+                        <p>Sân 5 người số 2, hiện đại và được trang bị cơ sở vật chất mang lại trải nghiệm chất lượng cho người chơi nhờ vào sự mới mẻ và sạch sẽ của cơ sở vật chất. </p>
+				<p>------------------------------------</p>     
+ 						           <div class="col-md-12">
+                  <button class="book_btn btn btn-primary" data-toggle="modal" data-target="#bookingModal" data-field="Sân 5-2">Đặt Sân</button>
+                     </div>
+                  </div>                   
                   </div>
                </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh4.jpg" alt="#"/></figure>
+               <div class="col-md-4">
+                  <div class="book_box">
+                     <div class="book_img">
+                        <figure><img src="images/anh3.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="book_room">
+                        <h3>Sân 7</h3>
+                        <span>200.000 VNĐ/giờ</span>
+                        <p>Được thiết kế theo tiêu chuẩn , đáp ứng hoàn toàn các nhu cầu các giải bóng thường niên. Là lựa chọn ưu tiên hàng đầu giành cho các giải đấu thường niên. </p>
+                       	<p>------------------------------------</p>     
+ 						           <div class="col-md-12">
+                  <button class="book_btn btn btn-primary" data-toggle="modal" data-target="#bookingModal" data-field="Sân 7">Đặt Sân</button>
+                      </div>
+                    </div>             
                   </div>
                </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh5.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh6.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh7.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh8.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh9.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh10.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh11.jpg" alt="#"/></figure>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="gallery_img">
-                     <figure><img src="images/anh12.jpg" alt="#"/></figure>
-                  </div>
-               </div>             
             </div>
          </div>
       </div>
-      <!-- end gallery -->
-    
+
+       <!-- Modal -->
+      <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="bookingModalLabel">Thông tin Đặt Sân</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+               
+                  <form action="/confirm" id="bookingForm" method="post">
+                     <div class="mb-3">
+                        <label for="fieldName" class="form-label">Tên Sân</label>
+                          
+                        
+                        <input type="text" class="form-control" id="fieldName" name="fieldName" readonly required>
+                     </div>
+                     <div class="mb-3">
+                        <label for="bookingDate" class="form-label">Ngày Đặt</label>
+                        <input type="date" class="form-control" id="bookingDate" name="bookingDate" required>
+                     </div>
+                     <button type="submit" class="btn btn-primary">Xác Nhận Đặt Sân</button>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+  <script>
+// Lắng nghe sự kiện mở modal để điền tên sân vào form
+				$('#bookingModal').on('show.bs.modal', function (event) {
+		    var button = $(event.relatedTarget); // Nút đã nhấn
+		    var fieldName = button.data('field'); // Lấy tên sân từ data-* attribute
+		    var modal = $(this);
+		    modal.find('.modal-body #fieldName').val(fieldName); // Điền tên sân vào input
+		});
+		  </script>
+      <!-- Include Bootstrap JS and jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+      <!-- end book -->
       <!--  footer -->
-       <footer>
+     <footer>
          <div class="footer">
             <div class="container">
                <div class="row">
@@ -183,9 +231,10 @@
                   <div class="col-md-4">
                      <h3>Liên kết</h3>
                      <ul class="link_menu">
-                        <li><a class="nav-link" th:href="@{/home}">Trang chủ</a></li>
-						<li class="active"><a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a></li>                       
-                        <li><a class="nav-link" th:href="@{/booknow}">Đặt sân ngay</a></li>
+                        <li><a class="nav-link" th:href="@{/home}">Trang chủ</a></li>                    
+                        <li><a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a></li>
+						<li class="active"><a class="nav-link" th:href="@{/booknow}">Đặt sân ngay</a></li>
+                        
                      </ul>
                   </div>
                   <div class="col-md-4">

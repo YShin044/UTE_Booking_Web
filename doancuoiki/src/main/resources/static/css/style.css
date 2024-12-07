@@ -451,13 +451,20 @@ button {
      font-weight: 500;
      border-radius: 30px;
 }
-
+#check:checked ~ .content{
+	display: block;
+}
 .read_more:hover {
      background: #fe0000;
      color: #fff;
      transition: ease-in all 0.5s;
 }
-
+#check{
+	display: none;
+}
+.content{
+	display: none;
+}
 /** about section **/
 
 .about {
@@ -603,7 +610,7 @@ button {
 /** blog section **/
 
 .blog {
-     background: url(../images/blog_bg.jpg);
+     background: url(../images/bg.jpg);
      background-repeat: no-repeat;
      background-size: 100% 100%;
      padding: 60px 0 30px 0;
@@ -615,7 +622,7 @@ button {
 }
 
 .blog .titlepage h2 {
-     color: #fff;
+     color: #121212;
 }
 
 .blog .titlepage p {
@@ -679,6 +686,85 @@ button {
 
 /** end blog section **/
 
+/** book section **/
+
+.book {
+     background: url(../images/bookute.jpg);
+     background-repeat: no-repeat;
+     background-size: 100% 100%;
+     padding: 60px 0 30px 0;
+     margin-top: 60px;
+}
+
+.book .titlepage {
+     text-align: center;
+}
+
+.book .titlepage h2 {
+     color: #121212;
+}
+
+.book .titlepage p {
+     color: #fff;
+     font-size: 17px;
+     margin-top: 20px;
+}
+
+.book .book_box {
+     text-align: left;
+     background-color: #fff;
+     margin-bottom: 30px;
+     transition: ease-in all 0.5s;
+}
+
+.book .book_box .book_img {
+     overflow: hidden;
+}
+
+.book .book_box .book_img figure {
+     margin: 0;
+}
+
+.book .book_box .book_img figure img {
+     width: 100%;
+     transition: all .5s;
+}
+
+.book .book_box .book_img figure img:hover {
+     transform: scale(1.2);
+}
+
+.book .book_box .book_room {
+     padding: 33px 30px;
+     text-align: left;
+}
+
+.book .book_box .book_room h3 {
+     color: #fff;
+     font-size: 25px;
+     line-height: 20px;
+     font-weight: 500;
+     padding-bottom: 5px;
+     transition: ease-in all 0.5s;
+     margin: auto;
+}
+
+.book .book_box .book_room span {
+     font-size: 15px;
+     color: #ff0909;
+     font-weight: bold;
+     margin-bottom: 10px;
+     display: block;
+}
+
+.book .book_box .book_room p {
+	 color: #fff;
+     font-size: 14px;
+     line-height: 20px;
+}
+
+
+/** end book section **/
 
 /** contact section **/
 
@@ -962,8 +1048,16 @@ line-height: 35px;
     justify-content: center;
     height: 100%; /* Đảm bảo logo nằm gọn trong chiều cao của thanh điều hướng */
 }
+.button-53 {
+    transition: background-color 0.3s, transform 0.3s;
+}
 
+.button-53:hover {
+    transform: scale(1.05);
+}
 
-
-
+.button-53.selected {
+    background-color: red !important;
+    color: white !important;
+}
 

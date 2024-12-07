@@ -1,5 +1,8 @@
 package com.example.doancuoiki.service;
 
+
+import java.util.List;
+
 import com.example.doancuoiki.model.UserModel;
 
 public interface IUserServices {
@@ -9,10 +12,9 @@ public interface IUserServices {
 	
 	UserModel FindByUserName(String username);
 	
-	
 	void insert(UserModel user);
 	
-	boolean register(String email, String password, String username, String fullname, String phone);
+	boolean register(String username, String password,String email,  String fullname, String phone);
 	
 	boolean checkExistEmail(String email);
 	
@@ -28,10 +30,19 @@ public interface IUserServices {
 
 	void update(UserModel user);
 
-
 	UserModel FindByEmail(String email);
 
-
+	void updatePassword(String email, String newPassword);
 	
+	public void sendmail(String tomail,String subject,String body);
+
+
+	void deleteuser(int id);
+
+
+	void updateuser(String name, String phone, String email, int id);
+
+
+	List<UserModel> getalluser();
 
 }

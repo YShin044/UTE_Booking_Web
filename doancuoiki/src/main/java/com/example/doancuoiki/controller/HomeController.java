@@ -1,14 +1,74 @@
 package com.example.doancuoiki.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+
+import com.example.doancuoiki.utils.Constant;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
 	
-	@GetMapping("/home")
-    public String home() {
-        return "index";  // Tên của tệp HTML trong thư mục templates, không cần đuôi .html
+	// Phương thức giúp lấy fullname và account từ session và thêm vào model
+    private void addUserToModel(HttpSession session, Model model) {
+        String fullname = (String) session.getAttribute(Constant.SESSION_FULLNAME);
+        String account = (String) session.getAttribute(Constant.SESSION_ACCOUNT);        
+        String username = (String) session.getAttribute(Constant.SESSION_USERNAME);
+        String email = (String) session.getAttribute(Constant.SESSION_EMAIL);
+        String phone = (String) session.getAttribute(Constant.SESSION_PHONE);
+
+        if (account != null && fullname != null) {
+            model.addAttribute("fullname", fullname);
+            model.addAttribute("username", username);
+            model.addAttribute("email", email);
+            model.addAttribute("phone", phone);
+        }
+        
     }
+	
+	
+    @GetMapping("/")
+    public String home1(HttpSession session, Model model) {
+		addUserToModel(session, model);  // Gọi phương thức để thêm thông tin người dùng vào model
+        return "index";  // Trả về trang home.html
+	}
+    
+	@GetMapping("/home")
+    public String home(HttpSession session, Model model) {
+		addUserToModel(session, model);  // Gọi phương thức để thêm thông tin người dùng vào model
+        return "index";  // Trả về trang home.html
+	}
+	
+	@GetMapping("/gallery")
+    public String gallery(Model model, HttpSession session) {
+		addUserToModel(session, model);  // Gọi phương thức để thêm thông tin người dùng vào model
+        return "gallery";  // Chuyển hướng đến trang gallery.html
+	}
+	
+	@GetMapping("/booknow")
+    public String booknow(Model model, HttpSession session) {
+		  addUserToModel(session, model);  // Gọi phương thức để thêm thông tin người dùng vào model
+	      return "booknow";  // Chuyển hướng đến trang booknow.html
+	}
+	
+	@GetMapping("/profile")
+    public String profile(Model model, HttpSession session) {
+		  addUserToModel(session, model);  // Gọi phương thức để thêm thông tin người dùng vào model
+	      return "profile";  // Chuyển hướng đến trang booknow.html
+	}
+	
+	@GetMapping("/changepassword")
+    public String changepassword(Model model, HttpSession session) {
+		  addUserToModel(session, model);  // Gọi phương thức để thêm thông tin người dùng vào model
+		// Truyền thông báo thành công hoặc lỗi vào model
+	        model.addAttribute("success", null);
+	        model.addAttribute("error", null);
+	      return "changepassword";  // Chuyển hướng đến trang booknow.html
+	}
+	
+	
 	
 }

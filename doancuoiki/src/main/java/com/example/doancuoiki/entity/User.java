@@ -1,6 +1,7 @@
 package com.example.doancuoiki.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -30,6 +31,24 @@ public class User implements Serializable {
 
     @Column(name="status")
     private int status;
+    
+    @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+    
+    @PrePersist
+    public void prePersist() {
+        if (createdAt == null) {
+            createdAt = new Date(); // Gán giá trị thời gian hiện tại khi tạo đối tượng
+        }
+        if (images == null || images.isEmpty()) {
+            images = "icon_login.jpg";  // Gán ảnh mặc định nếu không có ảnh
+        }
+    }
+    
+    @Column(name = "Images", columnDefinition = "nvarchar(500) NULL")
+    private String images;
+
 
     // Bi-directional one-to-many association to Booking
     @OneToMany(mappedBy="user")
@@ -93,7 +112,15 @@ public class User implements Serializable {
         this.bookings = bookings;
     }
 
-    // Helper methods for managing bi-directional relationship
+    public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
+	}
+
+	// Helper methods for managing bi-directional relationship
     public Booking addBooking(Booking booking) {
         getBookings().add(booking);
         booking.setUser(this);

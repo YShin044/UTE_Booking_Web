@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>keto</title>
+      <title>UTE FootBall</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -58,20 +58,18 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item active">
-                                 <a class="nav-link" th:href="@{/}">Home</a>
+                                 <a class="nav-link" th:href="@{/}">Trang chủ</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" th:href="@{/room}">Our room</a>
+                                 <a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" th:href="@{/gallery}">Gallery</a>
+                                 <a class="nav-link" th:href="@{/booknow}">Đặt sân ngay</a>
                               </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" th:href="@{/booknow}">Book Now</a>
-                              </li>
-                              <li class="nav-item">
+                             <li class="nav-item">
    								<span th:if="${session.account != null}">
-      								<a class="nav-link" th:href="@{/profile}" th:text="${session.account.fullname}">Tên người dùng</a>
+      								<a class="nav-link" th:href="@{/profile}" th:text="${fullname}"></a>
+      								
    								</span>
    								<span th:if="${session.account == null}">
       								<a class="nav-link" th:href="@{/login}">Đăng nhập/Đăng ký</a>
@@ -97,13 +95,15 @@
             </ol>
             <div class="carousel-inner">
                <div class="carousel-item active">
-                  <img class="first-slide" th:src="@{/images/banner1.jpg}" alt="First slide">
+                  <img class="first-slide" src="images/ban1.jpg" alt="First slide">
+                  <div class="container">
+                  </div>
                </div>
                <div class="carousel-item">
-                  <img class="second-slide" th:src="@{/images/banner2.jpg}" alt="Second slide">
+                  <img class="second-slide" src="images/ban2.jpg" alt="Second slide">
                </div>
                <div class="carousel-item">
-                  <img class="third-slide" th:src="@{/images/banner3.jpg}" alt="Third slide">
+                  <img class="third-slide" src="images/ban3.jpg" alt="Third slide">
                </div>
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -120,21 +120,11 @@
                <div class="row">
                   <div class="col-md-5">
                      <div class="book_room">
-                        <h1>Book a Room Online</h1>
-                        <form class="book_now">
-                           <div class="row">
+                        <h1>Gia nhập với chúng tôi!</h1>
+						<form class="book_now" th:action="@{/booknow}" method="get">
+                           <div class="row">                            
                               <div class="col-md-12">
-                                 <span>Arrival</span>
-                                 <img class="date_cua" th:src="@{/images/date.png}">
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="arrival_date">
-                              </div>
-                              <div class="col-md-12">
-                                 <span>Departure</span>
-                                 <img class="date_cua" th:src="@{/images/date.png}">
-                                 <input class="online_book" placeholder="dd/mm/yyyy" type="date" name="departure_date">
-                              </div>
-                              <div class="col-md-12">
-                                 <button class="book_btn">Book Now</button>
+                                 <button class="book_btn">Đặt Sân</button>
                               </div>
                            </div>
                         </form>
@@ -151,33 +141,244 @@
             <div class="row">
                <div class="col-md-5">
                   <div class="titlepage">
-                     <h2>About Us</h2>
-                     <p>The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software.</p>
-                     <a class="read_more" href="Javascript:void(0)"> Read More</a>
+                  	<input type = "checkbox"  id = "check">
+                     <h2>Về Chúng Tôi</h2>
+                     <h1>Welcome, <span th:text="${fullname}"></span></h1>
+                     <p> Sân bóng đá Trường Đại học Sư phạm Kỹ thuật (UTE) là địa điểm thể thao quan trọng, phục vụ cho việc rèn luyện thể chất và tổ chức các hoạt động thể thao của sinh viên. Với cơ sở vật chất hiện đại và không gian rộng rãi, sân bóng đáp ứng nhu cầu tập luyện và thi đấu của các đội bóng trong và ngoài trường. Chúng tôi cam kết duy trì và phát triển sân bóng như một phần không thể thiếu trong đời sống sinh viên, góp phần nâng cao sức khỏe và tinh thần đoàn kết trong cộng đồng UTE. </p>
+                	<div class="content">
+                	 <p> Sân bóng đá tại Trường Đại học Sư phạm Kỹ thuật (UTE) là nơi diễn ra nhiều hoạt động thể thao sôi nổi, đặc biệt là các giải bóng đá nam sinh viên. Năm 2021, Đoàn Thanh niên và Hội Sinh viên trường đã tổ chức Giải bóng đá nam sinh viên tranh "Cúp UTE 2021" tại sân vận động của trường, thu hút đông đảo sinh viên tham gia và cổ vũ. </p>
+
+<p>Năm 2022, sân bóng tiếp tục là địa điểm tổ chức Giải bóng đá nam sinh viên tranh "Cúp UTE 2022", với sự tham gia nhiệt tình của các đội bóng và cổ động viên, tạo nên không khí thi đấu hào hứng và đoàn kết. </p>
+
+<p>Ngoài ra, sân bóng còn là nơi diễn ra các trận đấu trong khuôn khổ Giải vô địch Bóng đá sinh viên toàn quốc - SV Champions League 2022, nơi đội tuyển bóng đá của trường đã xuất sắc giành chiến thắng, đánh dấu cột mốc quan trọng trong lịch sử thể thao của UTE.  </p>
+                	 </div>
+                     <label class="read_more" for="check"  href="Javascript:void(0)"> Xem thêm</a>
                   </div>
                </div>
                <div class="col-md-7">
                   <div class="about_img">
-                     <figure><img th:src="@{/images/about.png}" alt="#"/></figure>
+                     <figure><img src="images/about.png" alt="#"/></figure>
                   </div>
                </div>
             </div>
          </div>
       </div>
       <!-- end about -->
-      <!-- Add other sections here similarly -->
-      <!-- footer -->
-      <footer>
+      <!-- gallery -->
+      <div  class="gallery">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>bộ sưu tập</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-3 col-sm-6">
+                  <div class="gallery_img">
+                     <figure><img src="images/anh1.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="gallery_img">
+                     <figure><img src="images/anh2.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="gallery_img">
+                     <figure><img src="images/anh3.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="gallery_img">
+                     <figure><img src="images/anh4.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="gallery_img">
+                     <figure><img src="images/anh5.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="gallery_img">
+                     <figure><img src="images/anh6.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="gallery_img">
+                     <figure><img src="images/anh7.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="gallery_img">
+                     <figure><img src="images/anh8.jpg" alt="#"/></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end gallery -->
+      <!-- blog -->
+      <div  class="blog">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Tin tức</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="blog_box">
+                     <div class="blog_img">
+                        <figure><img src="images/bl1.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="blog_room">
+                        <h3>Vô Địch!!</h3>
+                        <span>Giải bóng đá SV 2022 </span>
+                        <p>Giải vô địch Bóng đá sinh viên toàn quốc - SV Champions League 2022 lần đầu tiên được Bộ GD&ĐT tổ chức dành cho sinh viên các trường đại học (ĐH), cao đẳng, học viện trên quy mô cả nước. Lần đầu tiên đội tuyển bóng đá Trường Đại học Sư phạm Kỹ thuật Thành phố Hồ Chí Minh (ĐH SPKT TP.HCM) đăng quang một giải vô địch bóng đá sinh viên có quy mô toàn quốc (hiện tại là khu vực phía Nam), nhân đúng kỷ niệm 60 năm tròn ngày thành lập trường. </p>
+                     
+ 						<p>Cre: <a href="https://bit.ly/3ZjlQCe" target="_blank">https://bit.ly/3ZjlQCe</a></p>                  
+ 					   </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="blog_box">
+                     <div class="blog_img">
+                        <figure><img src="images/bl2.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="blog_room">
+                        <h3>Giải Nhì</h3>
+                        <span>Giải thể thao bóng đá 7 người SINH VIÊN VIỆT NAM KHU VỰC TP.HCM </span>
+                        <p>Đội tuyển bóng đá HCMUTE đã đạt danh hiệu Á quân tại Giải Thể thao Sinh viên Việt Nam khu vực TP.HCM – Bộ môn bóng đá 7 người. Đây là thành quả đáng tự hào, ghi dấu ấn mạnh mẽ cho tinh thần thi đấu hết mình của các cầu thủ và sự chỉ đạo chiến thuật sắc bén từ ban huấn luyện. </p>
+
+						<p>Với màn trình diễn nổi bật trong suốt giải đấu, đội đã vượt qua nhiều đối thủ mạnh để tiến sâu vào trận Chung kết khu vực, khẳng định vị thế của HCMUTE trong làng thể thao sinh viên. Thành tích này không chỉ là kết quả của quá trình tập luyện không ngừng mà còn thể hiện ý chí và sự đoàn kết cao độ của toàn đội. </p>
+						 <p>Cre: <a href="https://bit.ly/3VhDLrQ" target="_blank">https://bit.ly/3VhDLrQ</a></p>                  
+						
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="blog_box">
+                     <div class="blog_img">
+                        <figure><img src="images/bl3.jpg" alt="#"/></figure>
+                     </div>
+                     <div class="blog_room">
+                        <h3>ĐH SPKT 3-0 Quốc tế SG</h3>
+                        <span>Giải bóng đá Thanh Niên sinh viên Việt Nam lần II - 2024 Cúp THACO </span>
+                        <p>Chiều 7.1, đội Trường ĐH Sư phạm Kỹ thuật (SPKT) TP.HCM thể hiện bản lĩnh ở trận ra quân khi giành chiến thắng dễ dàng trước đội Trường ĐH Quốc tế Sài Gòn với tỷ số 3-0 ở nhóm 3, vòng loại khu vực TP.HCM. </p>
+                        <p>Cre: <a href="https://thanhnien.vn/doi-truong-dh-spkt-tphcm-vs-doi-truong-dh-quoc-te-sai-gon-se-co-bat-ngo-185240107080658714.htm" target="_blank">https://thanhnien.vn/doi-truong-dh-spkt-tphcm-vs-doi-truong-dh-quoc-te-sai-gon-se-co-bat-ngo-185240107080658714.htm</a></p>                  
+                       
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end blog -->
+       <!-- our_room -->
+      <div  class="our_room">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Sân Bóng Của Chúng Tôi</h2>
+                     <p> Số lượng sân: 02 sân đội 5 người, 01 sân đội 7 người</p>           
+					 <p> Kích thước sân: 2 sân Dài (40m) Ngang (20m), 1 sân Dài (65m) Ngang (45m)
+					 <p>Tổng diện tích: 2x800m2, 1x2925m2
+					 <p>Tình trạng kinh doanh: Tốt </p>
+                  </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+      <!-- end our_room -->
+      <!--  contact -->
+      <div class="contact">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Thông tin liên hệ</h2>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                  <form id="request" class="main_form">
+                     <div class="row">
+                        <div class="col-md-12 ">
+                           <input class="contactus" placeholder="Name" type="type" name="Name"> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Email" type="type" name="Email"> 
+                        </div>
+                        <div class="col-md-12">
+                           <input class="contactus" placeholder="Phone Number" type="type" name="Phone Number">                          
+                        </div>
+                        <div class="col-md-12">
+                           <textarea class="textarea" placeholder="Message" type="type" Message="Name">Message</textarea>
+                        </div>
+                        <div class="col-md-12">
+                           <button class="send_btn">Gửi</button>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <div class="col-md-6">
+                  <div class="map_main">
+                     <div class="map-responsive">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d489.8110093521693!2d106.77214242415852!3d10.85043350303062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527c5d99444c5%3A0x8298ee4c6ad0c64d!2zU8OibiBiw7NuZyDEkEggU1BLVCBUUCBIQ00!5e0!3m2!1svi!2s!4v1731125958935!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end contact -->
+      <!--  footer -->
+     <footer>
          <div class="footer">
             <div class="container">
                <div class="row">
                   <div class=" col-md-4">
-                     <h3>Contact US</h3>
+                     <h3>Liên hệ</h3>
                      <ul class="conta">
-                        <li><i class="fa fa-map-marker" aria-hidden="true"></i> Address</li>
-                        <li><i class="fa fa-mobile" aria-hidden="true"></i> +01 1234569540</li>
-                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> demo@gmail.com</a></li>
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i> Số 1 Đ.Võ Văn Ngân, Linh Chiểu, Thủ Đức, Hồ Chí Minh </li>
+                        <li><i class="fa fa-mobile" aria-hidden="true"></i> +84 908617108</li>
+                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> trungnh@hcmute.edu.vn</a></li>
                      </ul>
+                  </div>
+                  <div class="col-md-4">
+                     <h3>Liên kết</h3>
+                     <ul class="link_menu">
+                       <li class="active"><a class="nav-link" th:href="@{/home}">Trang chủ</a></li>
+                        <li><a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a></li>
+                        <li><a class="nav-link" th:href="@{/booknow}">Đặt sân ngay</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-md-4">
+                     <h3>News letter</h3>
+                     <form class="bottom_form">
+                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                        <button class="sub_btn">subscribe</button>
+                     </form>
+                     <ul class="social_icon">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-10 offset-md-1">
+           
+                     </div>
                   </div>
                </div>
             </div>
@@ -185,11 +386,11 @@
       </footer>
       <!-- end footer -->
       <!-- Javascript files-->
-      <script th:src="@{/js/jquery.min.js}"></script>
-      <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-      <script th:src="@{/js/jquery-3.0.0.min.js}"></script>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.bundle.min.js"></script>
+      <script src="js/jquery-3.0.0.min.js"></script>
       <!-- sidebar -->
-      <script th:src="@{/js/jquery.mCustomScrollbar.concat.min.js}"></script>
-      <script th:src="@{/js/custom.js}"></script>
+      <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="js/custom.js"></script>
    </body>
 </html>
