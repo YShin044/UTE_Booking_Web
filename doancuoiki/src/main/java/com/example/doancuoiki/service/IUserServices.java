@@ -42,7 +42,8 @@ public interface IUserServices {
 
 	void updateuser(String name, String phone, String email, int id);
 
-
 	List<UserModel> getalluser();
+	
+	void changepassword(String Password, UserModel a);
 
 }

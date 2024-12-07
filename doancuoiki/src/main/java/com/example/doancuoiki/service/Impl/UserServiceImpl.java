@@ -151,5 +151,16 @@ public class UserServiceImpl implements IUserServices {
 		us.setPhone(phone);
 		userRepository.save(us);
 	}
+
+	@Override
+	public void changepassword(String Password,UserModel a) {
+		
+		a.setPassword(Password);
+        userRepository.save(a);
+	}
+
+	
+	
+	
     
 }

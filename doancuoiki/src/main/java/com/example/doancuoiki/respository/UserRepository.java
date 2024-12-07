@@ -22,8 +22,6 @@ public interface UserRepository extends JpaRepository<UserModel, Integer> {
     boolean existsByPhone(String phone);
 
     boolean existsByResetToken(String resetToken);
-
-	void save(Optional<UserModel> userOpt);
 	
 	
 }
