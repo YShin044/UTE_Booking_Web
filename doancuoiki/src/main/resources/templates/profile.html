@@ -68,12 +68,14 @@
                     <div class="col-md-6">
                     <!-- Avatar Container -->
                     <div class="avatar-container">
-                        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="img-fluid rounded-circle">
-                        <!-- Nút chỉnh sửa avatar -->
-                        <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editAvatarModal">
-                            <i class="fas fa-camera"></i> Chỉnh sửa
-                        </button>
-                    </div>
+							<!-- Hiển thị ảnh đại diện từ thư mục uploadIMG hoặc ảnh mặc định nếu không có -->
+							<img th:src="@{${profileImage != null ? '/upload/' + profileImage : 'https://via.placeholder.com/150'}}"
+								alt="Profile Picture" class="img-fluid rounded-circle">
+							<!-- Nút chỉnh sửa avatar -->
+							<button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editAvatarModal">
+								<i class="fas fa-camera"></i> Chỉnh sửa
+							</button>
+				</div>
             </div>
         </div>
 
@@ -94,14 +96,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/upload-image" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="image">Chọn ảnh đại diện</label>
-                            <input type="file" class="form-control" id="image" name="image" accept="image/*" required />
-                        </div>
-                        <button type="submit" class="btn btn-primary">Cập nhật ảnh</button>
-                    </form>
-                </div>
+							<form action="/upload-image" method="post" enctype="multipart/form-data">
+								<div class="form-group">
+									<label for="image">Chọn ảnh đại diện</label>
+									<input type="file" class="form-control" id="image" name="image" accept="image/*"
+										required />
+								</div>
+								<button type="submit" class="btn btn-primary">Cập nhật ảnh</button>
+							</form>
+				</div>
             </div>
         </div>
     </div>

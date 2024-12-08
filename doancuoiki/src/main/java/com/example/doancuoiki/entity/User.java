@@ -2,7 +2,6 @@ package com.example.doancuoiki.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -50,9 +49,7 @@ public class User implements Serializable {
     private String images;
 
 
-    // Bi-directional one-to-many association to Booking
-    @OneToMany(mappedBy="user")
-    private List<Booking> bookings;
+
 
     public User() {}
 
@@ -104,13 +101,7 @@ public class User implements Serializable {
         this.status = status;
     }
 
-    public List<Booking> getBookings() {
-        return bookings;
-    }
 
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
 
     public String getImages() {
 		return images;
@@ -119,17 +110,4 @@ public class User implements Serializable {
 	public void setImages(String images) {
 		this.images = images;
 	}
-
-	// Helper methods for managing bi-directional relationship
-    public Booking addBooking(Booking booking) {
-        getBookings().add(booking);
-        booking.setUser(this);
-        return booking;
-    }
-
-    public Booking removeBooking(Booking booking) {
-        getBookings().remove(booking);
-        booking.setUser(null);
-        return booking;
-    }
 }

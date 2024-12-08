@@ -1,19 +1,20 @@
 package com.example.doancuoiki.respository;
 
-import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.example.doancuoiki.entity.Booking;
 
-public interface BookingRepository extends JpaRepository<Booking, Long> {
+@Repository
+public interface BookingRepository extends JpaRepository<Booking ,Long> {
+	  // Find booking by user_id
+    Optional<Booking> findByuserid(String userId);
 
-	// Tìm kiếm các đặt sân theo ngày
-    List<Booking> findByDate(LocalDate date);
+    // Find booking by booking_id
+    Optional<Booking> findBybookingid(Long bookingId); 
 
-    // Tìm kiếm các đặt sân theo ngày và phân trang
-    Page<Booking> findByDate(LocalDate date, Pageable pageable);
+	List<Booking> findByDateAndSanid(String bookingDate, String fieldName);
 }

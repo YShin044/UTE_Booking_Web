@@ -1,123 +1,104 @@
 package com.example.doancuoiki.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="bookings")
-@NamedQuery(name="Booking.findAll", query="SELECT b FROM Booking b")
-public class Booking implements Serializable{
+@NamedQuery(name="Booking.findAll", query="SELECT b FROM Booking b")	
+public class Booking implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @Column(name="bookingid")
+    private Long bookingid;
 
-    @Column(name="date", nullable=false)
-    private LocalDate date;
+    @Column(name="sanid", columnDefinition = "nvarchar(200) NULL")
+    private String sanid;
 
-    @Column(name="time", nullable=false)
-    private LocalTime time;
+    @Column(name="userid", columnDefinition = "nvarchar(200) NULL")
+    private String userid;
 
-    @Column(name="field", columnDefinition = "nvarchar(100) NOT NULL")
-    private String field;
+    @Column(name="date", columnDefinition = "nvarchar(200) NULL")
+    private String date;
 
-    @Column(name="status")
-    private int status;
+    @Column(name="time", columnDefinition = "nvarchar(200) NULL")
+    private String time;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+    @Column(name="Price", columnDefinition = "nvarchar(200) NULL")
+    private String price;
+    
+	@Column(name = "confirm", columnDefinition = "BOOLEAN DEFAULT NULL")
+    private Boolean confirm;
 
-    @Column(name="booking_date")
-    private LocalDateTime bookingDate;
+	
+	
+	public Boolean getConfirm() {
+		return confirm;
+	}
 
-    @Column(name="details", columnDefinition = "varchar(255)")
-    private String details;
+	public void setConfirm(Boolean confirm) {
+		this.confirm = confirm;
+	}
 
-    @Column(name="booking_id")
-    private Integer bookingId;
-
-    public Booking() {
-        super();
+    // Getter và Setter
+    public Long getBookingid() {
+        return bookingid;
     }
 
-    // Getter và Setter cho tất cả các thuộc tính
-
-    public int getId() {
-        return id;
+    public void setBookingid(Long bookingid) {
+        this.bookingid = bookingid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getSanid() {
+        return sanid;
     }
 
-    public LocalDate getDate() {
+    public void setSanid(String sanid) {
+        this.sanid = sanid;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
-    public String getField() {
-        return field;
+    public String getPrice() {
+        return price;
     }
 
-    public void setField(String field) {
-        this.field = field;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public LocalDateTime getBookingDate() {
-        return bookingDate;
-    }
-
-    public void setBookingDate(LocalDateTime bookingDate) {
-        this.bookingDate = bookingDate;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
-
-    public Integer getBookingId() {
-        return bookingId;
-    }
-
-    public void setBookingId(Integer bookingId) {
-        this.bookingId = bookingId;
+    // Constructor không tham số
+    public Booking() {
     }
 }

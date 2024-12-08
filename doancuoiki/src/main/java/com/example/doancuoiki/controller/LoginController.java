@@ -55,6 +55,7 @@ public class LoginController {
         	session.setAttribute(Constant.SESSION_USERNAME, username);
 			session.setAttribute(Constant.SESSION_ACCOUNT, "account");
             
+			
             // Lấy thông tin fullname từ cơ sở dữ liệu
             UserModel userFromDb = userService.FindByUserName(username); // Truy vấn từ UserRepository
             
@@ -62,10 +63,16 @@ public class LoginController {
             String fullname = userFromDb.getFullname(); // Lấy cột fullname
             String email = userFromDb.getEmail();       // Lấy cột email
             String phone = userFromDb.getPhone();       // Lấy cột phone
-      
+           
+            
+            Long user_id =userFromDb.getId();
+            String userIdStr = user_id.toString();
+            
             session.setAttribute(Constant.SESSION_FULLNAME, fullname);
             session.setAttribute(Constant.SESSION_EMAIL, email);
             session.setAttribute(Constant.SESSION_PHONE, phone);
+            session.setAttribute(Constant.SESSION_USERID,userIdStr);
+
             
             // Lưu vào session thông tin tài khoản
             session.setAttribute("user", user); // Lưu toàn bộ thông tin user vào session

@@ -54,15 +54,29 @@ public class HomeController {
 	}
 
 	@GetMapping("/booknow")
-	public String booknow(Model model, HttpSession session) {
-		addUserToModel(session, model); // Gọi phương thức để thêm thông tin người dùng vào model
-		return "booknow"; // Chuyển hướng đến trang booknow.html
+	public String testPage(Model model, HttpSession session) {
+		
+		 String fullname = (String) session.getAttribute(Constant.SESSION_FULLNAME);
+	    String username = (String) session.getAttribute(Constant.SESSION_USERNAME);
+	    if (username != null) {
+	        model.addAttribute("username", username);
+	        model.addAttribute("fullname", fullname);
+	    } else {
+	        model.addAttribute("username", "Guest");
+	        model.addAttribute("fullname", fullname);// Nếu không có username, hiển thị Guest
+	    }
+	    return "booknow"; // Chuyển hướng đến trang test.html
 	}
 
 	@GetMapping("/profile")
 	public String profile(Model model, HttpSession session) {
-		addUserToModel(session, model); // Gọi phương thức để thêm thông tin người dùng vào model
-		return "profile"; // Chuyển hướng đến trang booknow.html
+	    addUserToModel(session, model); // Gọi phương thức để thêm thông tin người dùng vào model
+	    String username = (String) session.getAttribute("username"); // Lấy tên người dùng từ session
+		UserModel user = userService.FindByUserName(username);
+	    if (user != null) {
+	        model.addAttribute("profileImage",user.getImages()); // Truyền tên ảnh vào model
+	    }
+	    return "profile"; // Trả về trang profile
 	}
 
 	@PostMapping("/changepassword")

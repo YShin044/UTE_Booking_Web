@@ -159,6 +159,16 @@ public class UserServiceImpl implements IUserServices {
         userRepository.save(a);
 	}
 
+	@Override
+	public void saveimg(String fileName, UserModel user) {
+		
+        user.setImages(fileName);
+        userRepository.save(user);
+		
+	}
+
+
+
 	
 	
 	

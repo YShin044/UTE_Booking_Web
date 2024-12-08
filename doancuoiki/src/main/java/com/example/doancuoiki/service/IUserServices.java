@@ -46,4 +46,9 @@ public interface IUserServices {
 	
 	void changepassword(String Password, UserModel a);
 
+
+	void saveimg(String fileName, UserModel user);
+
+
+	
 }
