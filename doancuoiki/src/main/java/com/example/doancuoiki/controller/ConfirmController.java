@@ -2,13 +2,13 @@ package com.example.doancuoiki.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ConfirmController {
 
-    @PostMapping("/confirm")
+    @GetMapping("/confirm")
     public String bookNow(@RequestParam("fieldName") String fieldName,
                           @RequestParam("bookingDate") String bookingDate,
 //                          @RequestParam("bookingTime") String bookingTime,

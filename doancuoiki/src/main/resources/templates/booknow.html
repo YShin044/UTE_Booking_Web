@@ -32,6 +32,20 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <style>
+    .book_btn {
+        background-color: red; /* Màu nền ban đầu */
+        color: white; /* Màu chữ ban đầu */
+        border-color: red; /* Màu viền ban đầu */
+        transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    }
+
+    .book_btn:hover {
+        background-color: white; /* Màu nền khi hover */
+        color: black; /* Màu chữ khi hover */
+        border-color: black; /* Màu viền khi hover */
+    }
+</style>
    </head>
    <!-- body -->
    <body class="main-layout inner_page">
@@ -71,15 +85,15 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item">
-                                 <a class="nav-link" th:href="@{/home}">Trang chủ</a>
+                                 <a class="nav-link" th:href="@{/}">Trang chủ</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link active" th:href="@{/booknow}">Đặt sân ngay</a>
+                                 <a class="nav-link active" th:href="@{/booknow}">Đặt sân</a>
                               </li>
-                             <li class="nav-item">
+                               <li class="nav-item">
    								<span th:if="${session.account != null}">
       								<a class="nav-link" th:href="@{/profile}" th:text="${fullname}"></a>
       								
@@ -131,7 +145,7 @@
                      
  						<p>------------------------------------</p>     
  						           <div class="col-md-12">
-                  <button class="book_btn btn btn-primary" data-toggle="modal" data-target="#bookingModal" data-field="Sân 5-1">Đặt Sân</button>
+						<button class="book_btn btn btn-primary" data-toggle="modal" data-target="#bookingModal" data-field="Sân 5-1">Đặt Sân</button>
                                  </div>             
  					   </div>
                   </div>
@@ -147,7 +161,7 @@
                         <p>Sân 5 người số 2, hiện đại và được trang bị cơ sở vật chất mang lại trải nghiệm chất lượng cho người chơi nhờ vào sự mới mẻ và sạch sẽ của cơ sở vật chất. </p>
 				<p>------------------------------------</p>     
  						           <div class="col-md-12">
-                  <button class="book_btn btn btn-primary" data-toggle="modal" data-target="#bookingModal" data-field="Sân 5-2">Đặt Sân</button>
+					<button class="book_btn btn btn-primary" data-toggle="modal" data-target="#bookingModal" data-field="Sân 5-2">Đặt Sân</button>
                      </div>
                   </div>                   
                   </div>
@@ -163,7 +177,7 @@
                         <p>Được thiết kế theo tiêu chuẩn , đáp ứng hoàn toàn các nhu cầu các giải bóng thường niên. Là lựa chọn ưu tiên hàng đầu giành cho các giải đấu thường niên. </p>
                        	<p>------------------------------------</p>     
  						           <div class="col-md-12">
-                  <button class="book_btn btn btn-primary" data-toggle="modal" data-target="#bookingModal" data-field="Sân 7">Đặt Sân</button>
+						<button class="book_btn btn btn-primary" data-toggle="modal" data-target="#bookingModal" data-field="Sân 7">Đặt Sân</button>
                       </div>
                     </div>             
                   </div>
@@ -184,7 +198,7 @@
                </div>
                <div class="modal-body">
                
-                  <form action="/confirm" id="bookingForm" method="post">
+                  <form action="/confirm" id="bookingForm" method="get">
                      <div class="mb-3">
                         <label for="fieldName" class="form-label">Tên Sân</label>
                           
@@ -216,7 +230,7 @@
 
       <!-- end book -->
       <!--  footer -->
-     <footer>
+      <footer>
          <div class="footer">
             <div class="container">
                <div class="row">
@@ -225,29 +239,32 @@
                      <ul class="conta">
                         <li><i class="fa fa-map-marker" aria-hidden="true"></i> Số 1 Đ.Võ Văn Ngân, Linh Chiểu, Thủ Đức, Hồ Chí Minh </li>
                         <li><i class="fa fa-mobile" aria-hidden="true"></i> +84 908617108</li>
-                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> trungnh@hcmute.edu.vn</a></li>
-                     </ul>
+							<ul class="link_menu">
+								<li style="display: flex; align-items: center;"><i
+									class="fa fa-envelope" aria-hidden="true"></i> <a
+									href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+									style="margin-left: 5px;">trungnh@hcmute.edu.vn</a></li>
+							</ul>
+						</ul>                    
                   </div>
                   <div class="col-md-4">
                      <h3>Liên kết</h3>
                      <ul class="link_menu">
-                        <li><a class="nav-link" th:href="@{/home}">Trang chủ</a></li>                    
+                       <li><a class="nav-link" th:href="@{/home}">Trang chủ</a></li>
                         <li><a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a></li>
-						<li class="active"><a class="nav-link" th:href="@{/booknow}">Đặt sân ngay</a></li>
-                        
+                        <li class="active"><a class="nav-link" th:href="@{/booknow}">Đặt sân</a></li>
                      </ul>
                   </div>
                   <div class="col-md-4">
-                     <h3>News letter</h3>
+                   <h3>Đánh giá</h3>
                      <form class="bottom_form">
-                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                        <button class="sub_btn">subscribe</button>
+                        <input class="enter" placeholder="" type="text" name="">
+                        <button class="sub_btn">gửi</button>
                      </form>
                      <ul class="social_icon">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100063531161774"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://youtube.com/shorts/RUyLJWVB3cQ?si=Uv1XTQnqq-qMscLa"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-arrow-up fa-2x" aria-hidden="true" style="margin-left: 400px;"> </i><br></a></li>                       
                      </ul>
                   </div>
                </div>

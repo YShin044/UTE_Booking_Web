@@ -1061,3 +1061,276 @@ line-height: 35px;
     color: white !important;
 }
 
+.client_box img {
+   width: 80px; /* Chiều rộng khớp với placeholder */
+   height: 80px; /* Chiều cao khớp với placeholder */
+   border-radius: 50%; /* Làm tròn avatar để giống như hình tròn */
+   object-fit: cover; /* Đảm bảo ảnh lấp đầy khung mà không méo mó */
+   margin-bottom: 15px; /* Khoảng cách giữa avatar và phần nội dung */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng nhẹ để nổi bật */
+}
+
+.client_avatar {
+   border: 3px solid #ddd; /* Viền màu xám nhạt */
+   padding: 3px; /* Khoảng cách giữa ảnh và viền */
+}
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-body {
+    background: #fff;
+    padding: 20px;
+}
+
+.titlepage h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.titlepage h2:after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 4px;
+    background: #0f1521;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.blog-section {
+    background-color: #f9f9f9;
+}
+/* Banner Section */
+.banner-main {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Carousel */
+.banner-carousel .carousel-item img {
+    height: 100vh;
+    object-fit: cover;
+    filter: brightness(80%);
+}
+
+/* Carousel Caption */
+.carousel-caption {
+    padding: 15px; /* Tạo không gian cho văn bản */
+    border-radius: 10px; /* Bo tròn góc nếu cần */
+    display: inline-block; /* Lấy kích thước vừa đủ với nội dung */
+    position: absolute;
+    bottom: 70px; /* Đảm bảo caption nằm ở dưới cùng */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.caption-bg {
+    background: rgba(0, 0, 0, 0.6); /* Nền đen trong suốt */
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Hiệu ứng đổ bóng */
+}
+
+.carousel-caption h2 {
+    color: #ffffff; /* Đặt màu trắng */
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.carousel-caption p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.carousel-caption .btn {
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.carousel-caption .btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Booking Section */
+.booking-online {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.booking-online h3 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.booking-online .btn {
+    font-size: 16px;
+    padding: 10px 30px;
+    border-radius: 50px;
+    text-transform: uppercase;
+}
+
+.booking-online .btn:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+.carousel-caption .btn-secondary {
+    background-color: #ff4d4d; /* Màu đỏ cho nút */
+    color: #ffffff; /* Màu chữ trắng */
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
+}
+
+.carousel-caption .btn-secondary:hover {
+    background-color: #ffffff;
+}
+html {
+    scroll-behavior: smooth;
+}
+/* Book Section */
+.book {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.titlepage h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.titlepage p {
+    font-size: 16px;
+    color: #777;
+}
+
+.book_box {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.book_box:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+}
+
+.book_img figure {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.book_img figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book_img figure:hover img {
+    transform: scale(1.05);
+}
+
+.book_room {
+    padding: 20px;
+}
+
+.book_room h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin: 10px 0;
+}
+
+.book_room span {
+    font-size: 18px;
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.book_room p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.book_btn {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.book_btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.book_btn:active {
+    background-color: #e74c3c;
+    transform: translateY(2px);
+}

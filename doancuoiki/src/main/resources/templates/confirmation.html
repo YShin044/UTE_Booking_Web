@@ -72,6 +72,7 @@
                     <h3 class="info-item"><strong>Tên Sân:</strong> <span class="field-name" th:text="${fieldName}"></span></h3>
                     <h3 class="info-item"><strong>Ngày Đặt:</strong> <span class="booking-date" th:text="${bookingDate}"></span></h3>
                 </div>
+                
                 <div class="col-md-6 text-center">
                     <img th:src="@{${fieldImage}}" alt="Sân" class="img-fluid rounded shadow">
                 </div>
@@ -126,13 +127,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                <p><strong>Người đặt:</strong> <span th:text="${fullname}"></span></p>
                 <p><strong>Tên Sân:</strong> <span th:text="${fieldName}"></span></p>
                 <p><strong>Ngày Đặt:</strong> <span th:text="${bookingDate}"></span></p>
-                    <p><strong>Thời gian:</strong> <span id="modalBookingTime">Chưa chọn</span></p>
+                <p><strong>Thời gian:</strong> <span id="modalBookingTime"></span></p>
+                <p><strong>Thanh toán:</strong></p>
+                    <img th:src="@{/images/momo.jpg}" alt="Momo QR" class="img-fluid" style="width: 160px; height: auto;">
+
+                   
                 </div>
                 <div class="modal-footer">
                     <div class="btn-group">
+                    <p><strong>Chú ý điện thoại của bạn Quản lí sẽ gọi để xác nhận</strong></p>
+                
                         <button id="confirmButton">Xác Nhận</button>
+                        
                         <button id="closeModal">Đóng</button>
                     </div>
                 </div>
@@ -143,6 +152,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<div id="qrcode" class="text-center mt-4"></div>
 
 <script>
 $(document).ready(function () {
@@ -158,6 +168,7 @@ $(document).ready(function () {
         $("#modalFieldName").text(fieldName);
         $("#modalBookingDate").text(bookingDate);
 
+        
         // Hiển thị modal
         $("#infoModal").modal('show');
     });
@@ -170,7 +181,12 @@ $(document).ready(function () {
     // Xác nhận và đóng modal
     $("#confirmButton").click(function () {
         alert("Đặt sân thành công!");
+        
+        
+    
 
+        
+        
         // Xóa nội dung ô thời gian
         $("#modalBookingTime").text("Chưa chọn"); // Hoặc để trống ""
 
@@ -187,7 +203,18 @@ $(document).ready(function () {
     });
 });
 </script>
- <footer>
+<script>
+document.getElementById("confirmButton").addEventListener("click", function () {
+    // Lấy giá trị từ modalBookingTime và fieldName
+    const bookingTime = document.getElementById("modalBookingTime").innerText;
+    const fieldName = document.querySelector(".field-name").innerText; // Lấy giá trị fieldName từ modal
+
+    // Điều hướng đến URL với tất cả các tham số cần thiết
+    const url = `/confirma?bookingTime=${encodeURIComponent(bookingTime)}&fieldName=${encodeURIComponent(fieldName)}&bookingDate=${encodeURIComponent('01/01/2024')}`; // Cập nhật bookingDate nếu cần
+    window.location.href = url;
+});
+</script>
+  <footer>
          <div class="footer">
             <div class="container">
                <div class="row">
@@ -196,28 +223,25 @@ $(document).ready(function () {
                      <ul class="conta">
                         <li><i class="fa fa-map-marker" aria-hidden="true"></i> Số 1 Đ.Võ Văn Ngân, Linh Chiểu, Thủ Đức, Hồ Chí Minh </li>
                         <li><i class="fa fa-mobile" aria-hidden="true"></i> +84 908617108</li>
-                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="#"> trungnh@hcmute.edu.vn</a></li>
+                        <li> <i class="fa fa-envelope" aria-hidden="true"></i><a href="https://mail.google.com/mail/u/0/#inbox?compose=new"> trungnh@hcmute.edu.vn</a></li>
                      </ul>
                   </div>
                   <div class="col-md-4">
                      <h3>Liên kết</h3>
                      <ul class="link_menu">
-                        <li class="active"><a class="nav-link" th:href="@{/home}">Trang chủ</a></li>
+                       <li class="active"><a class="nav-link" th:href="@{/home}">Trang chủ</a></li>
                         <li><a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a></li>
-                        <li><a class="nav-link" th:href="@{/booknow}">Đặt sân ngay</a></li>
+                        <li><a class="nav-link" th:href="@{/booknow}">Đặt sân</a></li>
                      </ul>
                   </div>
                   <div class="col-md-4">
-                     <h3>News letter</h3>
+                   <h3>Đánh giá</h3>
                      <form class="bottom_form">
-                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                        <button class="sub_btn">subscribe</button>
+                        <input class="enter" placeholder="" type="text" name="">
+                        <button class="sub_btn">gửi</button>
                      </form>
                      <ul class="social_icon">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                       <a href="#"><i class="fa fa-arrow-up fa-2x" aria-hidden="true" style="margin-left: 400px;"> </i><br></a>                    
                      </ul>
                   </div>
                </div>
@@ -243,3 +267,4 @@ $(document).ready(function () {
       <script src="js/custom.js"></script>
 </body>
 </html>
+

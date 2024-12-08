@@ -87,7 +87,7 @@ public class HomeController {
 			}
 		
 			userService.changepassword(confirmPassword, user);
-		
+			
 		return "profile";
 	}
 	
