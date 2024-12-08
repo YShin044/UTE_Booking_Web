@@ -64,7 +64,12 @@
                                  <a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" th:href="@{/booknow}">Đặt sân</a>
+                                <span th:if="${session.account != null}">
+	      								<a class="nav-link" th:href="@{/booknow}">Đặt Sân</a>
+	   							</span>
+	   							<span th:if="${session.account == null}">
+	      								<a class="nav-link" th:href="@{/login}">Đặt Sân</a>
+	   							</span>
                               </li>
 	                            <li class="nav-item">
 	   								<span th:if="${session.account != null}">
@@ -72,9 +77,14 @@
 	      								
 	   								</span>
 	   								<span th:if="${session.account == null}">
-	      								<a class="nav-link" th:href="@{/login}">Đăng nhập/Đăng ký</a>
+	      								<a class="nav-link" th:href="@{/login}">Đăng nhập</a>
 	   								</span>
 								</li>
+								<li class="nav-item">
+                                 <span th:if="${session.account != null}">
+      								<a class="nav-link" th:href="@{/history}">Lịch sử đặt sân</a>
+   								</span>
+                              </li>
                            </ul>
                         </div>
                      </nav>
@@ -113,7 +123,12 @@
          <div class="caption-bg">
             <h2>Đặt Sân Dễ Dàng</h2>
             <p>Chỉ vài bước đơn giản để sở hữu sân bóng yêu thích của bạn.</p>
+            <span th:if="${session.account != null}">
             <a th:href="@{/booknow}" class="btn btn-secondary">Đặt Sân Ngay</a>
+	   							</span>
+	   							<span th:if="${session.account == null}">
+            <a th:href="@{/login}" class="btn btn-secondary">Đặt Sân Ngay</a>
+	   							</span>
          </div>
       </div>
    </div>
@@ -429,16 +444,21 @@
 									href="https://mail.google.com/mail/u/0/#inbox?compose=new"
 									style="margin-left: 5px;">trungnh@hcmute.edu.vn</a></li>
 							</ul>
-						</ul>                   
-                  </div>
-                  <div class="col-md-4">
-                     <h3>Liên kết</h3>
-                     <ul class="link_menu">
-                       <li class="active"><a class="nav-link" th:href="@{/home}">Trang chủ</a></li>
-                        <li><a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a></li>
-                        <li><a class="nav-link" th:href="@{/booknow}">Đặt sân</a></li>
-                     </ul>
-                  </div>
+							</ul>
+							</div>
+							<div class="col-md-4">
+								<h3>Liên kết</h3>
+								<ul class="link_menu">
+									<li class="active"><a class="nav-link" th:href="@{/home}">Trang chủ</a></li>
+									<li><a class="nav-link" th:href="@{/gallery}">Thư viện ảnh</a></li>
+									<span th:if="${session.account != null}">
+										<li><a class="nav-link" th:href="@{/booknow}">Đặt sân</a></li>
+									</span>
+									<span th:if="${session.account == null}">
+										<li><a class="nav-link" th:href="@{/login}">Đặt sân</a></li>
+									</span>
+								</ul>
+							</div>
                   <div class="col-md-4">
                    <h3>Đánh giá</h3>
                      <form class="bottom_form">

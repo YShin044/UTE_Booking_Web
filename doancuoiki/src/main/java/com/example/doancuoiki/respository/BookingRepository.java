@@ -11,10 +11,22 @@ import com.example.doancuoiki.entity.Booking;
 @Repository
 public interface BookingRepository extends JpaRepository<Booking ,Long> {
 	  // Find booking by user_id
-    Optional<Booking> findByuserid(String userId);
+    List<Booking> findByuserid(String userid);
 
     // Find booking by booking_id
     Optional<Booking> findBybookingid(Long bookingId); 
 
 	List<Booking> findByDateAndSanid(String bookingDate, String fieldName);
+	
+	List<Booking> findAll();
+	
+	List<Booking> findByConfirmNull();
+	
+	
+
+	
+
+	
+
+	
 }

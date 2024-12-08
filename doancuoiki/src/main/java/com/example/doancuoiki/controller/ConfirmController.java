@@ -115,7 +115,10 @@ public class ConfirmController {
 	     booking.setSanid(sanid);
 	     booking.setTime(time);
 	     booking.setUserid(userid);
-	     booking.setPrice("100k"); // Set the price (can be dynamically calculated based on field or time)
+	     // Lấy giá của sân từ đối tượng `San`
+	     String price = san.getPrice(); // Lấy giá sân
+	     booking.setPrice(price); // Gán giá sân vào booking
+
 
 	     // Save the booking to the database
 	     bookingRepository.save(booking);

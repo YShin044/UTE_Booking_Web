@@ -1,16 +1,23 @@
 package com.example.doancuoiki.controller.admin;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.doancuoiki.entity.Booking;
 import com.example.doancuoiki.model.UserModel;
+import com.example.doancuoiki.respository.BookingRepository;
+import com.example.doancuoiki.respository.UserRepository;
 import com.example.doancuoiki.service.IUserServices;
 import com.example.doancuoiki.utils.Constant;
 
@@ -18,7 +25,11 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminController {
-
+	 @Autowired
+	    private BookingRepository bookingRepository;
+	 @Autowired
+	    private UserRepository userRepository;
+	//guitamihsidjhaidh
 	@Autowired
 	private IUserServices userService;
 
@@ -34,7 +45,24 @@ public class AdminController {
 	@GetMapping("/admin")
 	public String adminhome(HttpSession session, Model model) {
 		addUserToModel(session, model); // Gọi phương thức để thêm thông tin người dùng vào model
+		
+		List<UserModel> users =  userRepository.findAll();
+		long totalUsers = users.size();
+		model.addAttribute("totalUsers", totalUsers);
+		   
+		
+		 List<Booking> unconfirmedBookings = bookingRepository.findByConfirmNull();
+		    // Đếm số lượng đơn chưa xác nhận
+		    long unconfirmedCount = unconfirmedBookings.size();
+		    // Thêm số lượng đơn chưa xác nhận vào model để hiển thị trên trang admin
+		    model.addAttribute("unconfirmedCount", unconfirmedCount);
+		
+		
+		
+		
+		
 		return "adminhome"; // Trả về trang home.html
+		
 	}
 
 	@GetMapping("/admin/user")
@@ -79,5 +107,50 @@ public class AdminController {
 		userService.updateuser(name, phone, email, id);
 		return "redirect:/admin/user";
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@PostMapping("/admin/delete-booking")
+	@ResponseBody
+	public ResponseEntity<?> deleteBooking(@RequestParam Long bookingId) {
+	    if (bookingRepository.existsById(bookingId)) {
+	        bookingRepository.deleteById(bookingId);
+	        return ResponseEntity.ok().build();
+	    } else {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Booking not found");
+	    }
+	}
+	@PostMapping("/admin/confirm-booking")
+	@ResponseBody
+	public ResponseEntity<?> confirmBooking(@RequestParam Long bookingId) {
+	    Optional<Booking> bookingOpt = bookingRepository.findById(bookingId);
+	    if (bookingOpt.isPresent()) {
+	        Booking booking = bookingOpt.get();
+	        booking.setConfirm(true); // Xác nhận đặt chỗ
+	        bookingRepository.save(booking);
+	        return ResponseEntity.ok().build();
+	    } else {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Booking not found");
+	    }
+	}
+	
+	
+	
+	
+	//Xem toàn bộ đơn hàng
+	@GetMapping("/admin/bookings")
+	public String checkBooking(Model model) {
+	
+		List<Booking> bookings = bookingRepository.findAll();
+		model.addAttribute("bookings", bookings);
+		return "adminbooking";
+	}
+	
 }
+

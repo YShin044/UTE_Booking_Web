@@ -26,12 +26,23 @@ public class San implements Serializable {
 
     @Column(name="san_name", columnDefinition = "nvarchar(200) NULL")
     private String sanName;  // Sửa tên thuộc tính ở đây
+    
+    @Column(name = "price", columnDefinition = "nvarchar(200) NULL")
+    private String price; // Giá của sân
   
     public Long getSan_id() {
         return san_id;
     }
 
-    public void setSan_id(Long san_id) {
+    public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public void setSan_id(Long san_id) {
         this.san_id = san_id;
     }
 

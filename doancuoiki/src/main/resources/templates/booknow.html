@@ -99,9 +99,14 @@
       								
    								</span>
    								<span th:if="${session.account == null}">
-      								<a class="nav-link" th:href="@{/login}">Đăng nhập/Đăng ký</a>
+      								<a class="nav-link" th:href="@{/login}">Đăng nhập</a>
    								</span>
 							  </li>
+							  <li class="nav-item">
+                                 <span th:if="${session.account != null}">
+      								<a class="nav-link" th:href="@{/history}">Lịch sử đặt sân</a>
+   								</span>
+                              </li>
                            </ul>
                         </div>
                      </nav>
@@ -185,7 +190,6 @@
             </div>
          </div>
       </div>
-
        <!-- Modal -->
       <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
          <div class="modal-dialog">
