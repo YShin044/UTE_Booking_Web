@@ -29,7 +29,7 @@ public class AdminController {
 	    private BookingRepository bookingRepository;
 	 @Autowired
 	    private UserRepository userRepository;
-	//guitamihsidjhaidh
+	
 	@Autowired
 	private IUserServices userService;
 
@@ -45,10 +45,10 @@ public class AdminController {
 	@GetMapping("/admin")
 	public String adminhome(HttpSession session, Model model) {
 		addUserToModel(session, model); // Gọi phương thức để thêm thông tin người dùng vào model
-		
-		List<UserModel> users =  userRepository.findAll();
-		long totalUsers = users.size();
-		model.addAttribute("totalUsers", totalUsers);
+		List<UserModel> users = userService.getalluser();
+		List<UserModel> filteredUsers = users.stream().filter(user -> user.getStatus() != 2).toList();
+		long filteredUser = filteredUsers.size();
+		model.addAttribute("totalUsers", filteredUser);
 		   
 		
 		 List<Booking> unconfirmedBookings = bookingRepository.findByConfirmNull();
