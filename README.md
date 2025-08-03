@@ -4,7 +4,7 @@
   <em>A secure and user-friendly web application for booking and managing soccer fields, developed as a final project.</em>
   <br/><br/>
   <!-- Hãy chụp ảnh màn hình giao diện đẹp nhất của trang web và chèn vào đây -->
-  <img src="https://github.com/YShin044/UTE_Football_Web/blob/master/assets/UTE_Web.jpg?raw=true" alt="Website Screenshot">
+  <img src="https://github.com/YShin044/UTE_Booking_Web/blob/master/assets/UTE_Web.jpg" alt="Website Screenshot">
 </p>
 
 <!-- HÀNG HUY HIỆU CÔNG NGHỆ -->
